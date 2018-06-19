@@ -29,7 +29,6 @@ const app = new Vue({
  data: {
     todos:[
       {id:'0',booksName:'Война и мир', author:'Лев Толстой'},
-      {id:'1',booksName:'Война и мир', author:'Лев Толстой'},
       {id:'2',booksName:'«Автостопом по галактике» ', author:'Дуглас Адамс'},
       {id:'3',booksName:'«Алиса в Стране чудес»', author:'Льюис Кэрролл'},
       {id:'4',booksName:'«Алхимик» ', author:'Пауло Коэльо'},
@@ -41,10 +40,9 @@ const app = new Vue({
       {id:'10',booksName:'«Дети полуночи» ', author:'Салман Рушди'},
       {id:'11',booksName:'«Дневник Бриджит Джонс»', author:'Хелен Филдинг'},
       {id:'12',booksName:'«Женщина в белом»', author:' Уильям Уилки Коллинз'},
-      //{id:'13',booksName:'Война и мир часть 1', author:'Лев Толстой'},
-      //{id:'14',booksName:'Война и мир часть 2', author:'Лев Толстой'},
-      //{id:'15',booksName:'Война и мир часть 3', author:'Лев Толстой'},
-
+      {id:'13',booksName:'Война и мир часть 1', author:'Лев Толстой'},
+      {id:'14',booksName:'Война и мир часть 2', author:'Лев Толстой'},
+      {id:'15',booksName:'Война и мир часть 3', author:'Лев Толстой'},
     ]
  },
   router
