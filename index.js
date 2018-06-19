@@ -1,10 +1,9 @@
-import Vue from 'vue';
 
-/**
- * Created by alex on 6/18/18.
- */
 console.log('Привет');
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
+Vue.use(VueRouter)
 
 const BooksText = {
   template: '<div> jjjj</div>'
@@ -23,8 +22,8 @@ const Authors = {
 const router = new VueRouter({
 
   routes: [
-    { path: '/text', component: BooksText },
-    { path: '/author', component: Authors }
+    { path: './text', component: BooksText },
+    { path: './author', component: Authors }
   ]
 })
 

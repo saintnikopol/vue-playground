@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Список книг</title>
     <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!--<script src="https://unpkg.com/vue/dist/vue.js"></script>-->
+    <!--<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>-->
     <!--<script type="text/javascript" src="src/index.js"></script>-->
 </head>
 <body>
@@ -14,8 +14,8 @@
 <div id="app">
     <ol>
         <li v-for="todo in todos" >
-            <router-link to="/text">{{todo.booksName}}</router-link>
-            <router-link to="/author">{{todo.author}}</router-link>
+            <a href="#">{{todo.booksName}}</a>
+            <router-link to="./author">{{todo.author}}</router-link>
         </li>
     </ol>
 

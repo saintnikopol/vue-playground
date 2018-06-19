@@ -1,37 +1,34 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-/**
- * Created by alex on 6/18/18.
- */
 console.log('Привет');
 
-
-const BooksText = {
-  template: '<div> jjjj</div>'
-}
-const Authors = {
-  template: '<div>dddddddd</div>'
-}
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
 
 
-//const routes = [
-//  { path: '/text', component: BooksText },
-//  { path: '/author', component: Authors }
-//]
-
+import BooksText from './views/BooksText.vue';
+import Authors from './views/Authors.vue';
 
 const router = new VueRouter({
 
   routes: [
-    { path: '/text', component: BooksText },
-    { path: '/author', component: Authors }
+
+    {
+      path: '/authors/:authors',
+      component: Authors,
+    },
+        {
+          path: '/authors/:authors/books/:text',
+          component: BooksText,
+        }
+
   ]
-})
+});
 
 const app = new Vue({
   el:'#app',
  data: {
     todos:[
+      {id:'0',booksName:'Война и мир', author:'Лев Толстой'},
       {id:'1',booksName:'Война и мир', author:'Лев Толстой'},
       {id:'2',booksName:'«Автостопом по галактике» ', author:'Дуглас Адамс'},
       {id:'3',booksName:'«Алиса в Стране чудес»', author:'Льюис Кэрролл'},
@@ -43,7 +40,10 @@ const app = new Vue({
       {id:'9',booksName:'«Грозовой перевал»', author:'Эмили Бронте'},
       {id:'10',booksName:'«Дети полуночи» ', author:'Салман Рушди'},
       {id:'11',booksName:'«Дневник Бриджит Джонс»', author:'Хелен Филдинг'},
-      {id:'12',booksName:'«Женщина в белом»', author:' Уильям Уилки Коллинз'}
+      {id:'12',booksName:'«Женщина в белом»', author:' Уильям Уилки Коллинз'},
+      //{id:'13',booksName:'Война и мир часть 1', author:'Лев Толстой'},
+      //{id:'14',booksName:'Война и мир часть 2', author:'Лев Толстой'},
+      //{id:'15',booksName:'Война и мир часть 3', author:'Лев Толстой'},
 
     ]
  },

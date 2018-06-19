@@ -11,14 +11,20 @@
     <h1>Список книг</h1>
     <div id="app">
         <ol>
-            <li v-for="todo in todos" >
-                <router-link to="/text">{{todo.booksName}}</router-link>
-                <router-link to="/author">{{todo.author}}</router-link>
+            <li v-for="todo in todos">
+                <router-link :to="'/authors/' + todo.author + '/books/' + todo.booksName" v-bind:id="todo.id"
+                             v-bind:booksName="todo.booksName">{{todo.booksName}}</router-link>
+
+                <router-link :to="'/authors/' + todo.author" v-bind:id="todo.id"
+                             v-bind:author="todo.author">{{todo.author}}</router-link>
             </li>
         </ol>
-
-        <router-view></router-view>
+        <div>
+            <router-view></router-view>
+        </div>
 
     </div>
+
+</body>
 
   </html>
