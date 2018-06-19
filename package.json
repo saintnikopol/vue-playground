@@ -1,0 +1,23 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "This is demo project",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap-vue": "^2.0.0-rc.11",
+    "jquery": "^3.3.1",
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-command": "^0.2.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.12.0",
+    "babel": "^6.23.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Boyko Aleksandra",
+  "license": "ISC"
+}
