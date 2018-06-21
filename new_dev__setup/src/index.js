@@ -7,6 +7,8 @@ var Paginate = require('vuejs-paginate')
 Vue.component('paginate', Paginate);
 
 import  * as booksDatabase from './BooksDatabase.js';
+import styles from './css/styles.scss';
+
 let {bookList, findBookById, findBooksByAuthor, creadNewArrayList, greadstartBooksList}  = booksDatabase.default;
 //console.log({bookList},{booksDatabase});
 
@@ -58,11 +60,11 @@ const router = new VueRouter({
       component: Authors,
       props: true
     },
-        {
-          path: '/authors/:author/books/:text/id/:id',
-          component: BooksText,
-          props: true,
-        }
+    {
+      path: '/authors/:author/books/:text/id/:id',
+      component: BooksText,
+      props: true,
+    }
 
   ]
 });

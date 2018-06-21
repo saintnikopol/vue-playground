@@ -1,0 +1,54 @@
+.header{
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+.nav {
+  float: left;
+  width: 40%;
+  height: 70%; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+h2 {
+  text-align: center
+}
+.view {
+  float: right;
+  padding: 20px;
+  width: 50%;
+  background-color: #f1f1f1;
+  height: 70%;
+  text-align: center;
+  /*align-content: center;*/
+}
+a {
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.list {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.pagination {
+  width:70%;
+  height: 50px;
+
+}
+.page-item {
+  float: left;
+  width: 30px;
+  height: 30px;
+  border: solid lightblue;
+  background: grey;
+  text-align: center;
+}
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
