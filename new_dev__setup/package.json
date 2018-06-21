@@ -70,6 +70,7 @@
     "webpack-serve": "^0.1.4"
   },
   "dependencies": {
-    "vue": "^2.5.13"
+    "vue": "^2.5.13",
+    "vuejs-paginate": "^1.9.3"
   }
 }

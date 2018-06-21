@@ -40,6 +40,19 @@
             padding-left: 5%;
             padding-right: 5%;
         }
+        .pagination{
+            width:70%;
+            height: 50px;
+
+        }
+        .page-item{
+            float: left;
+            width: 30px;
+            height: 30px;
+            border: solid lightblue;
+            background: grey;
+            text-align: center;
+        }
         footer {
             background-color: #777;
             padding: 10px;
@@ -59,23 +72,36 @@
     <div class="nav col-md-4">
         <h2>Список книг</h2>
         <ol>
-            <li v-for="todo in bookList" class="list">
+            <li v-for="todo in visibleList" class="list">
                 <router-link :to="'/authors/' + todo.author + '/books/' + todo.booksName + '/id/' + todo.id" v-bind:id="todo.id"
-                             v-bind:booksName="todo.booksName" v-on:click="idBookFind()">{{todo.booksName}}
+                             v-bind:booksName="todo.booksName">{{todo.booksName}}
                 </router-link>
 
                 <router-link :to="'/authors/' + todo.author" v-bind:id="todo.id"
                              v-bind:author="todo.author">{{todo.author}}
                 </router-link>
             </li>
+
         </ol>
+        <paginate
+                :page-count="10"
+                :page-range="3"
+                :margin-pages="1"
+                :click-handler="clickCallback"
+                :prev-text="'Prev'"
+                :next-text="'Next'"
+                :container-class="'pagination'"
+                :page-class="'page-item'">
+        </paginate>
     </div>
     <div class="view col-md-8 text-center">
         <router-view></router-view>
     </div>
 
 </div>
-<div class="footer"></div>
+<div class="footer">
+
+</div>
 
 </body>
 
