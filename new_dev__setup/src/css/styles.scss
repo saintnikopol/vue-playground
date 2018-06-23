@@ -1,24 +1,26 @@
 .header{
+  width: 100%;
+  height: 10%;
   background-color: #666;
-  padding: 30px;
+  //padding: 30px;
   text-align: center;
   font-size: 35px;
   color: white;
 }
-.nav {
-  float: left;
-  width: 40%;
-  height: 70%; /* only for demonstration, should be removed */
-  background: #ccc;
-  padding: 20px;
-}
+//.nav {
+//  float: left;
+//  width: 100%;
+//  height: 10%; /* only for demonstration, should be removed */
+//  background: #ccc;
+//  padding: 20px;
+//}
 h2 {
   text-align: center
 }
 .view {
-  float: right;
-  padding: 20px;
-  width: 50%;
+  //float: right;
+  //padding: 20px;
+  width: 100%;
   background-color: #f1f1f1;
   height: 70%;
   text-align: center;
@@ -44,6 +46,26 @@ a {
   border: solid lightblue;
   background: grey;
   text-align: center;
+  list-style-type: none;
+}
+.nexts{
+  float: left;
+  width: 50px;
+  height: 30px;
+  border: solid lightblue;
+  background: grey;
+  text-align: center;
+  list-style-type: none;
+
+}
+.previous{
+  float: left;
+  width: 50px;
+  height: 30px;
+  border: solid lightblue;
+  background: grey;
+  text-align: center;
+  list-style-type: none;
 }
 footer {
   background-color: #777;

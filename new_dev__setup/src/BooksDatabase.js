@@ -31,19 +31,6 @@ let booksDatabase = {
 
     findBooksByAuthor:(searchedAuthors) => bookList.filter(({author}) => author === searchedAuthors),
 
-    //creadNewArrayList: function(startList, endList){
-    //    let newArrayBooks = bookList.slice(startList, endList);
-    //    console.log(newArrayBooks, 'newArrayBooks')
-    //    return newArrayBooks;
-    //    newArrayBooks.push( bookList);
-    //},
-//
-
-//findBookById2: (searchedId) => bookList.find((item) => item.id === searchedId)
-  //findBookById3: function (searchedId) {
-  //    return  bookList.find((item) => item.id === searchedId)
-  //}
-
 };
 
 export default booksDatabase;

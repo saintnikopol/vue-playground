@@ -8,44 +8,41 @@
 </head>
 <body>
 <div id="app" class="row ">
-<div class="header">
-    <h4>Книги которые надо прочитать</h4>
-</div>
+    <div class="view">
 
-    <div class="nav col-md-4">
-        <h2>Список книг</h2>
-        <ol>
-            <li v-for="todo in visibleList" class="list">
-                <router-link :to="'/authors/' + todo.author + '/books/' + todo.booksName + '/id/' + todo.id" v-bind:id="todo.id"
-                             v-bind:booksName="todo.booksName">{{todo.booksName}}
-                </router-link>
-
-                <router-link :to="'/authors/' + todo.author" v-bind:id="todo.id"
-                             v-bind:author="todo.author">{{todo.author}}
-                </router-link>
-            </li>
-
+        <h3>
+            <!--<router-link :to="'/list/'">-->
+            <!--<router-view name -="BooksAuthorsList"></router-view>-->
+                Книги которые надо прочитать
+            <!--</router-link>-->
+        </h3>
+       <ol>
+        <books-authors-list
+                v-for="item in visibleList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+        </books-authors-list>
         </ol>
-        <paginate
-                :page-count="pageCount"
-                :page-range="3"
-                :margin-pages="1"
-                :click-handler="clickCallback"
-                :prev-text="'Prev'"
-                :next-text="'Next'"
-                :container-class="'pagination'"
-                :page-class="'page-item'">
-        </paginate>
     </div>
-    <div class="view col-md-8 text-center">
-        <router-view></router-view>
-    </div>
+    <!--
+    <router-view ></router-view>
+    -->
 
+    <!--<div class="footer">-->
+        <!--<paginate-->
+                <!--:page-count="pageCount"-->
+                <!--:page-range="3"-->
+                <!--:margin-pages="1"-->
+                <!--:click-handler="clickCallback"-->
+                <!--:prev-text="'Prev'"-->
+                <!--:next-text="'Next'"-->
+                <!--:container-class="'pagination'"-->
+                <!--:page-class="'page-item'"-->
+                <!--:prev-class="'previous'"-->
+                <!--:next-class="'nexts'">-->
+        <!--</paginate>-->
+    <!--</div>-->
 </div>
-<div class="footer">
-
-</div>
-
 </body>
 
 </html>
