@@ -11,7 +11,7 @@ import  * as booksDatabase from './BooksDatabase.js';
 import styles from './css/styles.scss';
 
 let {bookList, findBookById, findBooksByAuthor, creadNewArrayList, greadstartBooksList}  = booksDatabase.default;
-//console.log({bookList},{booksDatabase});
+
 
 //import BooksText from './views/BooksText.vue';
 //import Authors from './views/Authors.vue';
@@ -29,35 +29,75 @@ function calcLastItemIndex(pageNum) {
 
 
 const BooksAuthorsList = {
-  props: ['todo'],
-  //data: {
-  //  bookList: bookList,
-  //  pageCount: pageCount,
-  //  currentPageNumber: pageNum
-  //
-  //},
+  data: function(){
+    return {
+      bookList: bookList,
+      pageCount: pageCount,
+      currentPageNumber: pageNum,
+      //visibleList:visibleList
+    }
+  },
+  props: [
+    'someObjectToPass'
+  ],
+  computed: {
+    visibleList: function() {
+      let startVisibleList = (this.currentPageNumber - 1) * itemsPerPage;
+      let endVisibleList = calcLastItemIndex(this.currentPageNumber);
 
-  template:
-    '<div>' +
-      '<h2>Список книг</h2>' +
+      return this.someObjectToPass.bookList.slice(startVisibleList, endVisibleList);
+      console.log(visibleList, 'visibleList');
+    },
+  },
+  methods: {
+    clickCallback: function(newPageNum) {
+      this.currentPageNumber = newPageNum;
+    },
 
-      '<li class="list">' +
-        '<router-link :to="/ authors / + todo.author +  / books /  + todo.booksName +  / id /  + todo.id">{{todo.booksName}}' +
-        '</router-link>' +
+  },
+  template: `<div>
+  <ol>
+    <li v-for="todo in visibleList" class="">
 
-        '<router-link :to=" / authors /  + todo.author" >{{todo.author}}</router-link> '+
-      '</li > ' +
-    '</div>'
+
+      <router-link :to="'/authors/' + todo.author" >
+        {{todo.author}}
+        </router-link>
+
+
+      <router-link :to="'/authors/' + todo.author + '/books/' + todo.booksName + '/id/' + todo.id">
+        {{todo.booksName}}
+      </router-link>
+
+    </li >
+  </ol>
+  <router-view></router-view>
+
+</div>`,
 
 };
 
+//const Paginate = {
+//  template: '<div>'+
+//    '<paginate' +
+//  ':page-count="pageCount"' +
+//  ':page-range="3"' +
+//  ':margin-pages="1"' +
+//  ':click-handler="clickCallback"' +
+//  ':prev-text="Prev"' +
+//  ':next-text="Next"' +
+//  ':container-class="pagination"' +
+//  ':page-class="page-item"' +
+//  ':prev-class="previous"' +
+//  ':next-class="nexts">' +
+//  '</paginate>' +
+//    '</div>'
+//};
 
-// registered the tree component with a different name
-// e.g. add namespace
-// this will cause error
-Vue.component('books-authors-list', BooksAuthorsList);
+Vue.component('paginate',Paginate);
 
 const BooksText = {
+  props: ['text', 'id'],
   computed: {
     description: function() {
       let book = findBookById(this.id);
@@ -68,15 +108,20 @@ const BooksText = {
       }
     }
   },
-  props: ['text', 'id'],
-  template: '' +
-  '<div>' +
-  '<h2>Название книги</h2>{{text}}' +
-  '<div>Описание</div>' +
-  '<div>' +
-  '{{description}}' +
-  '</div></div>',
+
+  template: `
+<div>
+  <h2>Название книги</h2>
+  {{text}}
+  <div>Описание</div>
+  <div>
+    {{description}}
+  </div>
+</div>`,
 };
+
+//Vue.component('books-text', BooksText);
+//Vue.component('authors', Authors);
 
 const Authors = {
   computed: {
@@ -87,79 +132,45 @@ const Authors = {
   },
   props: ['author'],
   // booksOfAuthor
-  template: '<div>' +
-  '<h2>Автор книги</h2>' +
-  '{{author}}' +
-  '<ol >' +
-  '<li v-for="list in shortList">{{list.booksName}}</li>' +
-  '</ol>' +
-  '</div>',
+  template: "<div>\
+  <h2>Автор книги</h2>\
+  {{author}}\
+  <ol >\
+    <li v-for=\"list in shortList\">{{list.booksName}}</li>\
+  </ol>\
+</div>",
 };
 
 const router = new VueRouter({
 
+
   routes: [
-    //{
-    //  path: '/list/',
-    //  component: BooksAuthorsList,
-    //
-    //
-    //  children: [
+    {
+      path: '/list/',
+      component: BooksAuthorsList,
+      props: {someObjectToPass: {bookList: bookList}},
+
+      children: [
         {
           path: '/authors/:author',
           component: Authors,
-          props: true
+          props: true,
         },
         {
           path: '/authors/:author/books/:text/id/:id',
           component: BooksText,
           props: true,
         }
-
-      //]
-    //}
+      ]
+    },
 ]
 });
 
-//const itemsPerPage = 5;
-//const pageCount = Math.ceil(bookList.length / itemsPerPage);
-//let pageNum = 1; // 0..max
-//
-//function calcLastItemIndex(pageNum) {
-//  let lastPossibleItem = pageNum * itemsPerPage;
-//  console.log(pageNum, 'pageNum ');
-//  console.log(lastPossibleItem, 'calcLastItemIndex ');
-//  return lastPossibleItem < bookList.length ? lastPossibleItem : bookList.length;
-//}
 
 const app = new Vue({
-  data: {
-    bookList: bookList,
-    pageCount: pageCount,
-    currentPageNumber: pageNum
-
-  },
-  computed: {
-    visibleList: function() {
-      let startVisibleList = (this.currentPageNumber - 1) * itemsPerPage;
-      let endVisibleList = calcLastItemIndex(this.currentPageNumber);
-
-      return this.bookList.slice(startVisibleList, endVisibleList);
-    },
-  },
-  methods: {
-    clickCallback: function(newPageNum) {
-      this.currentPageNumber = newPageNum;
-    },
-
-  },
-  //el: '#app',
-//render (h){
-//  return h(BooksAuthorsList)
-//},
+  el: '#app',
   router
 }).$mount('#app');
-
 
 
 

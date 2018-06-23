@@ -7,28 +7,17 @@
     <title>Список книг</title>
 </head>
 <body>
+
 <div id="app" class="row ">
     <div class="view">
 
         <h3>
-            <!--<router-link :to="'/list/'">-->
-            <!--<router-view name -="BooksAuthorsList"></router-view>-->
+            <router-link :to="'/list/'">
                 Книги которые надо прочитать
-            <!--</router-link>-->
+            </router-link>
         </h3>
-       <ol>
-        <books-authors-list
-                v-for="item in visibleList"
-                v-bind:todo="item"
-                v-bind:key="item.id">
-        </books-authors-list>
-        </ol>
-    </div>
-    <!--
-    <router-view ></router-view>
-    -->
-
-    <!--<div class="footer">-->
+        <router-view></router-view>
+        <!--<paginate></paginate>-->
         <!--<paginate-->
                 <!--:page-count="pageCount"-->
                 <!--:page-range="3"-->
@@ -41,7 +30,15 @@
                 <!--:prev-class="'previous'"-->
                 <!--:next-class="'nexts'">-->
         <!--</paginate>-->
+
+    </div>
+    <!--<div>-->
+        <!--<books-list><router-view ></router-view></books-list>-->
     <!--</div>-->
+
+    <div class="footer">
+
+    </div>
 </div>
 </body>
 
