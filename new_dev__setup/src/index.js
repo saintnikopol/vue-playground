@@ -25,11 +25,11 @@ function calcLastItemIndex(pageNum) {
   //console.log(pageNum, 'pageNum ');
   //console.log(lastPossibleItem, 'calcLastItemIndex ');
   return lastPossibleItem < bookList.length ? lastPossibleItem : bookList.length;
-}
+};
 
 
 const BooksAuthorsList = {
-  data: function(){
+  data: function() {
     return {
       bookList: bookList,
       pageCount: pageCount,
@@ -46,55 +46,68 @@ const BooksAuthorsList = {
       let endVisibleList = calcLastItemIndex(this.currentPageNumber);
 
       return this.someObjectToPass.bookList.slice(startVisibleList, endVisibleList);
-      console.log(visibleList, 'visibleList');
-    },
-  },
-  methods: {
-    clickCallback: function(newPageNum) {
-      this.currentPageNumber = newPageNum;
-    },
 
+    },
   },
-  template: `<div>
+  //methods: {
+  //  clickCallback: function(newPageNum) {
+  //    this.currentPageNumber = newPageNum;
+  //  }
+  //
+  //},
+  template: `
+<div>
   <ol>
     <li v-for="todo in visibleList" class="">
 
-
-      <router-link :to="'/authors/' + todo.author" >
+      <router-link :to="/authors/ + todo.author" >
         {{todo.author}}
-        </router-link>
+      </router-link>
 
-
-      <router-link :to="'/authors/' + todo.author + '/books/' + todo.booksName + '/id/' + todo.id">
+      <router-link :to="/authors/ + todo.author + /books/ + todo.booksName + /id/ + todo.id">
         {{todo.booksName}}
       </router-link>
 
     </li >
   </ol>
   <router-view></router-view>
-
-</div>`,
+  <book-paginate></book-paginate>
+</div>`
 
 };
+//Vue.component('books-authors-list',BooksAuthorsList);
 
-//const Paginate = {
-//  template: '<div>'+
-//    '<paginate' +
-//  ':page-count="pageCount"' +
-//  ':page-range="3"' +
-//  ':margin-pages="1"' +
-//  ':click-handler="clickCallback"' +
-//  ':prev-text="Prev"' +
-//  ':next-text="Next"' +
-//  ':container-class="pagination"' +
-//  ':page-class="page-item"' +
-//  ':prev-class="previous"' +
-//  ':next-class="nexts">' +
-//  '</paginate>' +
-//    '</div>'
-//};
+const BookPaginate = {
+  data: function() {
+    return {
+      pageCount: pageCount,
+      currentPageNumber: pageNum,
+    }
+  },
+  methods: {
+    clickCallback: function(newPageNum) {
+      this.currentPageNumber = newPageNum;
+    },
+  },
+  template: `
+<div>
+   <paginate
+       :page-count="pageCount"
+       :page-range="3"
+       :margin-pages="1"
+       :click-handler="clickCallback"
+       :prev-text="'Prev'"
+       :next-text="'Next'"
+       :container-class="'pagination'"
+       :page-class="'page-item'"
+       :prev-class="'previous'"
+       :next-class="'nexts'">
+   </paginate>
+</div>`,
+};
 
-Vue.component('paginate',Paginate);
+Vue.component('book-paginate', BookPaginate);
+//
 
 const BooksText = {
   props: ['text', 'id'],
@@ -120,8 +133,8 @@ const BooksText = {
 </div>`,
 };
 
-//Vue.component('books-text', BooksText);
-//Vue.component('authors', Authors);
+Vue.component('books-text', BooksText);
+Vue.component('authors', Authors);
 
 const Authors = {
   computed: {
@@ -132,13 +145,14 @@ const Authors = {
   },
   props: ['author'],
   // booksOfAuthor
-  template: "<div>\
-  <h2>Автор книги</h2>\
-  {{author}}\
-  <ol >\
-    <li v-for=\"list in shortList\">{{list.booksName}}</li>\
-  </ol>\
-</div>",
+  template: `
+<div>
+  <h2>Автор книги</h2>
+  {{author}}
+  <ol >
+    <li v-for="list in shortList">{{list.booksName}}</li>
+  </ol>
+</div>`,
 };
 
 const router = new VueRouter({
@@ -163,12 +177,13 @@ const router = new VueRouter({
         }
       ]
     },
-]
+  ]
 });
 
 
 const app = new Vue({
   el: '#app',
+
   router
 }).$mount('#app');
 
