@@ -1,9 +1,9 @@
 
 export const BooksPaginate = {
-    props: [
-        'pageNum',
-        'pageCount',
-    ],
+    props: {
+        'pageNum': Number,
+        'pageCount': Number,
+    },
     data: function() {
         return {
             currentPageNumber: this.pageNum,
@@ -19,7 +19,7 @@ export const BooksPaginate = {
 <div>
    <paginate
        :page-count="pageCount"
-       :page-range="3"
+       :page-range="10"
        :margin-pages="1"
        :click-handler="clickCallback"
        :prev-text="'Prev'"

@@ -13,9 +13,9 @@ export const Authors = {
 <div>
   <h2>Автор книги</h2>
   {{author}}
-  <ol >
+  <ul>
     <li v-for="list in shortList">{{list.title}}</li>
-  </ol>
+  </ul>
 </div>`,
 };
 

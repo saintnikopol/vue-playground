@@ -44,7 +44,7 @@ export const BooksAuthorsList = {
     },
     template: `
 <div>
-  <ol>
+  <ul>
     <li v-for="todo in visibleList" class="">
 
       <router-link :to="/authors/ + todo.author" >
@@ -55,13 +55,13 @@ export const BooksAuthorsList = {
         {{todo.title}}
       </router-link>
 
-    </li >
-  </ol>
+    </li>
+  </ul>
   <router-view></router-view>
   
   <books-paginate
-    page-count="pageCount"
-    page-num="currentPageNumber"
+    :page-count="pageCount"
+    :page-num="currentPageNumber"
     v-on:page-num-changed="onPageNumChanged"
   ></books-paginate>
 </div>`,
