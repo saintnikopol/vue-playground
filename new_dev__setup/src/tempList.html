@@ -9,8 +9,8 @@
     <h2>Список книг</h2>
     <ol>
         <li v-for="todo in visibleList" class="list">
-            <router-link :to="'/authors/' + todo.author + '/books/' + todo.booksName + '/id/' + todo.id" v-bind:id="todo.id"
-                         v-bind:booksName="todo.booksName">{{todo.booksName}}
+            <router-link :to="'/authors/' + todo.author + '/books/' + todo.title + '/id/' + todo.id" v-bind:id="todo.id"
+                         v-bind:title="todo.title">{{todo.title}}
             </router-link>
 
             <router-link :to="'/authors/' + todo.author" v-bind:id="todo.id"

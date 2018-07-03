@@ -537,21 +537,16 @@ const books = [{
 }
 ];
 
-
-
-
 let id = 1;
-let booksDatabase = {
+let booksWithId = books.map((item) => {
+    item.id = id++;
+    return item;
+});
 
-    bookList: books.map((item) => {
-        item.id = id++;
-        return item;
-    }),
+export const bookList = booksWithId;
 
-    findBookById: (searchedId) => bookList.find(({id}) => id === searchedId),
+export const findBookById = (searchedId) => bookList.find(({id}) => id === searchedId);
 
-    findBooksByAuthor:(searchedAuthors) => bookList.filter(({author}) => author === searchedAuthors),
+export const findBooksByAuthor = (searchedAuthors) => bookList.filter(({author}) => author === searchedAuthors);
 
-};
-
-export default booksDatabase;
+export default { bookList, findBookById, findBooksByAuthor };

@@ -431,6 +431,7 @@ let books = [{
 ];
 
 
+let bookList = books;
 let booksDatabase = {
 
     bookList: books,
