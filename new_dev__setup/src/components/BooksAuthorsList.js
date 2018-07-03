@@ -1,7 +1,7 @@
 import  {bookList} from '../books/books2.js';
 // import { BooksText } from './BooksText';
 
-const itemsPerPage = 5;
+const itemsPerPage = 15;
 const pageCount = Math.ceil(bookList.length / itemsPerPage);
 let initialPageNum = 1; // 0..max
 

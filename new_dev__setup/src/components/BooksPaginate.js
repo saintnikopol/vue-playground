@@ -6,7 +6,6 @@ export const BooksPaginate = {
     ],
     data: function() {
         return {
-            pageCount: this.pageCount,
             currentPageNumber: this.pageNum,
         }
     },
