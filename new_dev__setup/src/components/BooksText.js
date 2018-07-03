@@ -2,11 +2,10 @@ import  {findBookById} from '../books/books2.js';
 
 
 export const BooksText = {
-    props: ['text', 'id', 'description'],
+    props: ['text', 'id'],
     computed: {
         description: function() {
             let book = findBookById(this.id);
-            console.log("let book = findBookById(this.id); book  === ", book);
             if (book) {
                 return book.description;
             } else {
