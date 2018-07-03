@@ -1,4 +1,9 @@
 //console.log('Привет');
+// require('popper');
+
+// require('jquery');
+//
+// require('bootstrap');
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -32,7 +37,7 @@ const router = new VueRouter({
       component: BooksAuthorsList,
       props: {someObjectToPass: {bookList: bookList}},
 
-      children: [
+/*      children: [
         {
           path: '/authors/:author',
           component: Authors,
@@ -43,12 +48,22 @@ const router = new VueRouter({
           component: BooksText,
           props: true,
         }
-      ]
+      ]*/
     },
+        {
+          path: '/authors/:author',
+          component: Authors,
+          props: true,
+        },
+        {
+          path: '/authors/:author/books/:text/id/:id',
+          component: BooksText,
+          props: true,
+        }
   ]
 });
 
-
+router.replace('/list');
 const app = new Vue({
   el: '#app',
 

@@ -10,11 +10,16 @@ export const Authors = {
     props: ['author'],
     // booksOfAuthor
     template: `
-<div>
+<div class="container">
   <h2>Автор книги</h2>
   {{author}}
   <ul>
-    <li v-for="list in shortList">{{list.title}}</li>
+    <li v-for="list in shortList">
+    
+          <router-link :to="/authors/ + list.author + /books/ + list.title + /id/ + list.id">
+            {{list.title}}
+          </router-link>
+</li>
   </ul>
 </div>`,
 };

@@ -24,10 +24,10 @@ export const BooksPaginate = {
        :click-handler="clickCallback"
        :prev-text="'Prev'"
        :next-text="'Next'"
-       :container-class="'pagination'"
-       :page-class="'page-item'"
-       :prev-class="'previous'"
-       :next-class="'nexts'">
+       :container-class="'btn-group'"
+       :page-class="'btn btn-secondary'"
+       :prev-class="'btn btn-secondary'"
+       :next-class="'btn btn-secondary'">
    </paginate>
 </div>`,
 };

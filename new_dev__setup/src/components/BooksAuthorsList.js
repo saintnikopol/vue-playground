@@ -43,17 +43,18 @@ export const BooksAuthorsList = {
       }
     },
     template: `
-<div>
+<div class="container">
   <ul>
     <li v-for="todo in visibleList" class="">
 
-      <router-link :to="/authors/ + todo.author" >
+      <router-link :to="/authors/ + todo.author + /books/ + todo.title + /id/ + todo.id">
+        <b>{{todo.title}}</b>
+      </router-link>
+
+      <router-link :to="/authors/ + todo.author">
         {{todo.author}}
       </router-link>
 
-      <router-link :to="/authors/ + todo.author + /books/ + todo.title + /id/ + todo.id">
-        {{todo.title}}
-      </router-link>
 
     </li>
   </ul>
